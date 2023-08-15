@@ -384,7 +384,7 @@ function saveData() {
       let type = getTypeByValue(value);
 
       // Any types here can be null
-      if (!value) {
+      if (!value && value != 0) {
         value = "null";
       }
 
