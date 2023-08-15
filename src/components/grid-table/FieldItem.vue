@@ -91,12 +91,12 @@ function findChip(value: TypeValue){
 
     <!-- Shamsi Date -->
     <template v-else-if="structure.mode === 'shamsi_date'">
-      {{ miladiToShamsiDate(value) }}
+      {{ miladiToShamsiDate(value) || '-' }}
     </template>
 
     <!-- Shamsi Datetime -->
     <template v-else-if="structure.mode === 'shamsi_datetime'">
-      {{ miladiToShamsiDateTime(value) }}
+      {{ miladiToShamsiDateTime(value) || '-' }}
     </template>
 
     <!-- Number-->
