@@ -149,6 +149,8 @@ function created() {
         defaultValue = d.default;
       } else if (d.type === "switch") {
         defaultValue = false;
+      } else if (d.type === "editor") {
+        defaultValue = "";
       } else {
         defaultValue = null;
       }
