@@ -237,6 +237,7 @@ const editorConfig = {
   --ck-color-base-border: hsl(0deg 0% 67.06%);
   --ck-color-toolbar-border: hsl(0deg 0% 67.06%);
   --ck-color-toolbar-background: #e1e1e1;
+  --ck-z-modal: 2500;
 }
 
 .ck.ck-powered-by-balloon,
