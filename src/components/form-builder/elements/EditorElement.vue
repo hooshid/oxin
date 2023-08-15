@@ -72,7 +72,6 @@ const props = defineProps<{
   config?: object;
 }>();
 
-
 const model = props.parentModel
   ? props.parentModel + "." + props.field.model
   : (props.field.model as string);
@@ -206,7 +205,7 @@ const editorConfig = {
     ],
   },
   simpleUpload: {
-    uploadUrl: "/api/panel/admin/upload",
+    uploadUrl: import.meta.env.VITE_OXIN_EDITOR_UPLOAD_URL,
     withCredentials: true,
     headers: {
       //'X-CSRF-TOKEN': 'CSRF-Token',
