@@ -23,4 +23,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           
-    if: github.event_name == 'push' && github.event.head_commit.modified | contains('package.json')
+    if: contains('package.json')
