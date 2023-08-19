@@ -186,6 +186,31 @@ const editorConfig = {
     shouldNotGroupWhenFull: true,
   },
   language: "fa",
+  link: {
+    decorators: {
+      openInNewTab: {
+        mode: "manual",
+        label: "Open in a new tab",
+        attributes: {
+          target: "_blank",
+        },
+      },
+      toggleDownloadable: {
+        mode: "manual",
+        label: "Downloadable",
+        attributes: {
+          download: "file",
+        },
+      },
+      toggleNoopenerNoreferrer: {
+        mode: "manual",
+        label: "لینک خارجی (noopener noreferrer)",
+        attributes: {
+          rel: "noopener noreferrer",
+        },
+      },
+    },
+  },
   image: {
     toolbar: [
       "imageTextAlternative",
@@ -237,6 +262,7 @@ const editorConfig = {
   --ck-color-base-border: hsl(0deg 0% 67.06%);
   --ck-color-toolbar-border: hsl(0deg 0% 67.06%);
   --ck-color-toolbar-background: #e1e1e1;
+  --ck-z-modal: 9999;
 }
 
 .ck.ck-powered-by-balloon,
@@ -250,7 +276,42 @@ const editorConfig = {
 
 .ck.ck-tooltip__text,
 .ck.ck-button,
-.ck.ck-button__label {
+.ck.ck-button__label,
+.ck.ck-label{
   font-family: iranyekan, Tahoma, Arial, serif;
+}
+
+.ck-source-editing-area {
+  direction: ltr;
+  text-align: left;
+}
+
+.ck.ck-content ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-right: 5px;
+}
+
+.ck.ck-content ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-right: 5px;
+}
+
+.ck.ck-content ul ul, .ck.ck-content ol ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-right: 15px;
+}
+
+.ck.ck-content ol ol, .ck.ck-content ul ol {
+  list-style-type: lower-latin;
+  list-style-position: inside;
+  margin-right: 15px;
+}
+
+.ck.ck-link-form .ck-input.ck-input-text {
+  text-align: left;
+  direction: ltr;
 }
 </style>
