@@ -17,10 +17,17 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-          
+
+      - name: Release
+        uses: justincy/github-action-npm-release@v1.2.0
+        id: release
+        
+      - name: Print release output
+        if: ${{ steps.release.outputs.released == 'true' }}
+        run: echo Release ID ${{ steps.release.outputs.release_id }}
+        
       - name: Publish package
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           
-    if: contains('package.json')
