@@ -19,7 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Release
-        uses: justincy/github-action-npm-release@v1.2.0
+        uses: justincy/github-action-npm-release@v2.1.1
         id: release
         
       - name: Print release output
