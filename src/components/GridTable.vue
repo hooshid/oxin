@@ -160,10 +160,12 @@ function createHeader() {
       o.visible = true;
     }
 
-    if (o.key.endsWith("_date")) {
-      o.field = { mode: "shamsi_date" };
-    } else if (o.key.endsWith("_datetime") || o.key.endsWith("_at")) {
-      o.field = { mode: "shamsi_datetime", class: "dir-ltr" };
+    if (typeof o.mode === 'undefined') {
+      if (o.key.endsWith("_date")) {
+        o.field = { mode: "shamsi_date" };
+      } else if (o.key.endsWith("_datetime") || o.key.endsWith("_at")) {
+        o.field = { mode: "shamsi_datetime", class: "dir-ltr" };
+      }
     }
 
     return o;

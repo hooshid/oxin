@@ -72,7 +72,6 @@ const props = defineProps<{
   config?: object;
 }>();
 
-
 const model = props.parentModel
   ? props.parentModel + "." + props.field.model
   : (props.field.model as string);
@@ -88,7 +87,6 @@ const { value, errorMessage, handleChange } = useField(
 
 const ckeditor = CKEditor.component;
 const editor = ClassicEditor;
-const editorData = ref("");
 const editorConfig = {
   plugins: [
     Alignment,
@@ -231,7 +229,7 @@ const editorConfig = {
     ],
   },
   simpleUpload: {
-    uploadUrl: "/api/panel/admin/upload",
+    uploadUrl: import.meta.env.VITE_OXIN_EDITOR_UPLOAD_URL,
     withCredentials: true,
     headers: {
       //'X-CSRF-TOKEN': 'CSRF-Token',
@@ -243,7 +241,9 @@ const editorConfig = {
 
 <template>
   <div>
-    <ckeditor :editor="editor" v-model="value" @update:model-value="handleChange" :config="editorConfig" tag-name="textarea" />
+    <label class="d-block mb-2">{{ props.field.label }}</label>
+
+    <ckeditor :editor="editor" :model-value="value || ''" @update:model-value="handleChange" :config="editorConfig" tag-name="textarea" />
 
     <div class="v-messages" style="--v-medium-emphasis-opacity: 1">
       <div

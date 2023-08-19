@@ -50,6 +50,13 @@ function renderDisplay() {
   ) {
     display.value = moment(date, "YYYY-MM-DDTHH:mm:ss").format(shamsiFormat);
   }
+  // datetime with sec
+  else if (
+    date.length == 19 &&
+    moment(date, "YYYY-MM-DD HH:mm:ss", true).isValid()
+  ) {
+    display.value = moment(date, "YYYY-MM-DD HH:mm:ss").format(shamsiFormat);
+  }
   // datetime
   else if (
     date.length == 16 &&
