@@ -199,10 +199,9 @@ const editorConfig = {
   },
   simpleUpload: {
     uploadUrl: import.meta.env.VITE_OXIN_EDITOR_UPLOAD_URL,
-    withCredentials: true,
+    withCredentials: false,
     headers: {
-      //'X-CSRF-TOKEN': 'CSRF-Token',
-      Authorization: "Bearer " + localStorage.getItem("Authorization"),
+      Authorization: "Bearer " + (localStorage.getItem("Authorization") || localStorage.getItem("token")),
     },
   },
 };
