@@ -271,44 +271,6 @@ function setPageNumberManually(event: Event) {
 }
 
 /**
- * Fullscreen table state
- */
-const tableIsFullScreen = ref(false);
-
-/**
- * Fullscreen table
- */
-function fullScreen() {
-  const x = document.getElementById("table") as HTMLElement;
-
-  if (!tableIsFullScreen.value) {
-    // table
-    x.style.position = "fixed";
-    x.style.top = "50px";
-    x.style.bottom = "0";
-    x.style.left = "0";
-    x.style.right = "0";
-    x.style.width = "100%";
-    x.style.zIndex = "19000";
-    x.style.overflowY = "auto";
-    x.style.background = "#fff";
-
-    // body
-    document.documentElement.style.overflowY = "hidden";
-
-    tableIsFullScreen.value = true;
-  } else {
-    // body
-    document.documentElement.style.overflowY = "auto";
-
-    // table
-    x.removeAttribute("style");
-
-    tableIsFullScreen.value = false;
-  }
-}
-
-/**
  * Raw filters (created from filter box)
  */
 const filters = ref<string>("[]");
@@ -360,21 +322,6 @@ function setFilters(sendFilter: string) {
         <v-tooltip activator="parent" location="top">{{
           showFilters ? "عدم نمایش فیلترها" : "نمایش فیلترها"
         }}</v-tooltip>
-      </v-btn>
-
-      <!-- Full screen -->
-      <v-btn
-        v-model="tableIsFullScreen"
-        icon
-        flat
-        class="ml-1 d-none d-sm-inline"
-        @click.stop="fullScreen()"
-      >
-        <v-icon>
-          {{ tableIsFullScreen ? "mdi-fullscreen-exit" : "mdi-fullscreen" }}
-        </v-icon>
-
-        <v-tooltip activator="parent" location="top">حالت تمام صفحه</v-tooltip>
       </v-btn>
 
       <!-- Table Fields -->
