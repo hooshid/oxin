@@ -11,6 +11,7 @@ export const useAppStore = defineStore({
     },
     loading: false,
     layout: {
+      isDarkTheme: false,
       cardType: "shadow" as "shadow" | "border",
       isSidebarDrawerTemporary: false,
       isHorizontalLayout: false,
