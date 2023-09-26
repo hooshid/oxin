@@ -316,7 +316,7 @@ function setFilters(sendFilter: string) {
         v-if="hasSearch"
         icon
         flat
-        class="ml-1 d-none d-sm-inline"
+        class="ml-1"
         @click="showFilters = !showFilters"
       >
         <v-icon>{{ showFilters ? "mdi-filter-off" : "mdi-filter" }}</v-icon>
