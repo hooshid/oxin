@@ -161,7 +161,7 @@ function createHeader() {
       o.visible = true;
     }
 
-    if (!o.field && (o.field && !o.field.mode)) {
+    if (!o.field || (o.field && !o.field.mode)) {
       if (o.key.endsWith("_date")) {
         o.field = { mode: "shamsi_date" };
       } else if (o.key.endsWith("_datetime") || o.key.endsWith("_at")) {
