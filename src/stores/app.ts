@@ -85,6 +85,8 @@ export const useAppStore = defineStore({
 
             if (error.response.data?.result?.message) {
               errorText = error.response.data.result.message;
+            } else if (error.response.data?.message) {
+              errorText = error.response.data.message;
             }
 
             if (errorText === null) {
