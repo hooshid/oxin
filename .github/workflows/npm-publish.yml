@@ -1,22 +1,20 @@
-name: Publish NPM Package
-
+name: Publish to NPM
 on:
   push:
     branches:
       - main
-
 jobs:
-  publish-npm:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
         
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
           
       - name: Check version changes
         uses: EndBug/version-check@v1.0.0 # More info about the arguments on the action page
@@ -26,9 +24,10 @@ jobs:
         if: steps.check.outputs.changed == 'true'
         run: 'echo "Version change! -> ${{ steps.check.outputs.type }}"'
         
-      - name: Publish package
+      - name: Install dependencies and build 🔧
         if: steps.check.outputs.changed == 'true'
+        run: npm ci && npm run build
+      - name: Publish package on NPM 📦
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
