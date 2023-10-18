@@ -536,6 +536,11 @@ function deleteData() {
     return;
   }
 
+  let result = confirm("آیا از حذف این ایتم مطمئن هستید؟");
+  if (result == false) {
+    return;
+  }
+  
   http
     .post(options.value.deleteUrl, {
       id: fields.value.id?.toString(),
