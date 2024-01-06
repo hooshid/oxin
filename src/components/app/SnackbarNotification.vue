@@ -7,8 +7,6 @@ import { useAppStore } from "../../stores/app";
     v-model="useAppStore().$state.notification.show"
     v-bind="useAppStore().$state.notification"
   >
-    {{ useAppStore().$state.notification.text }}
-
     <template #actions>
       <v-btn
         icon="mdi-close"
