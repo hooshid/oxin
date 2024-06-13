@@ -204,6 +204,47 @@ const editorConfig = {
       Authorization: "Bearer " + (localStorage.getItem("Authorization") || localStorage.getItem("token")),
     },
   },
+  mediaEmbed: {
+    previewsInData: true,
+    providers: [
+      {
+        name: 'youtube',
+        url: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
+        html: match => {
+          const id = match[0].split('v=')[1];
+          return (
+            '<div class="embed-responsive embed-responsive-16by9">' +
+            `<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${ id }" allowfullscreen></iframe>` +
+            '</div>'
+          );
+        }
+      },
+      {
+        name: 'aparat',
+        url: /^(https?:\/\/)?(www\.)?(aparat\.com)\/.+$/,
+        html: match => {
+          const id = match[0].split('/v/')[1];
+          return (
+            '<div class="embed-responsive embed-responsive-16by9">' +
+            `<iframe class="embed-responsive-item" src="https://www.aparat.com/video/video/embed/videohash/${ id }/vt/frame" allowfullscreen></iframe>` +
+            '</div>'
+          );
+        }
+      },
+      {
+        name: 'directVideo',
+        url: /^(https?:\/\/)?(www\.)?.+\.(mp4|webm|ogg)$/,
+        html: match => {
+          const url = match[0];
+          return (
+            '<div class="embed-responsive embed-responsive-16by9">' +
+            `<video controls><source src="${ url }" type="video/mp4"></video>` +
+            '</div>'
+          );
+        }
+      }
+    ]
+  },
 };
 </script>
 
@@ -281,5 +322,33 @@ const editorConfig = {
 .ck.ck-link-form .ck-input.ck-input-text {
   text-align: left;
   direction: ltr;
+}
+
+.ck .embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ck .embed-responsive::before {
+  content: '';
+  display: block;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.ck .embed-responsive .embed-responsive-item,
+.ck .embed-responsive iframe,
+.ck .embed-responsive embed,
+.ck .embed-responsive object,
+.ck .embed-responsive video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 </style>
