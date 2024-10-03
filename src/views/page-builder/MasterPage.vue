@@ -163,11 +163,16 @@ const options = computed<{
 });
 
 /**
+ * Is view port in mobile
+ */
+const { mobile } = useDisplay();
+
+/**
  * Form Mode
  */
 const formMode = computed(() => {
   if (formStructure && formStructure.options) {
-    if (useDisplay().smAndDown.value) {
+    if (mobile.value) {
       return "fullscreen";
     } else if (fullScreen.value) {
       return "fullscreen";
