@@ -1,6 +1,6 @@
 {
   "name": "@hooshid/oxin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "private": false,
   "deprecated": false,
@@ -16,6 +16,7 @@
   "author": "Alireza Kamali",
   "license": "MIT",
   "dependencies": {
+    "@ckeditor/ckeditor5-vue": "^6.0.0",
     "@hooshid/local-store": "^1.0.3",
     "@mdi/font": "^7.4.47",
     "@types/moment-jalaali": "^0.7.6",
