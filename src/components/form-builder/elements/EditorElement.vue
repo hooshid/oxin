@@ -2,7 +2,7 @@
 import type IFormBuilderField from "../../../types/IFormBuilderField";
 import { useField } from "vee-validate";
 
-import CKEditor from "@ckeditor/ckeditor5-vue";
+import { Ckeditor } from '@ckeditor/ckeditor5-vue';
 import coreTranslations from 'ckeditor5/translations/fa.js';
 import {
   ClassicEditor,
