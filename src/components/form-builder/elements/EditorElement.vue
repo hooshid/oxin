@@ -98,7 +98,7 @@ const { value, errorMessage, handleChange } = useField(
   },
 );
 
-const ckeditor = CKEditor.component;
+const CKEditorComponent = Ckeditor;
 const editor = ClassicEditor;
 const editorConfig = {
   plugins: [
@@ -269,7 +269,7 @@ const editorConfig = {
   <div>
     <label class="d-block mb-2">{{ props.field.label }}</label>
 
-    <ckeditor :editor="editor" :model-value="value || ''" @update:model-value="handleChange" :config="editorConfig" tag-name="textarea" />
+    <CKEditorComponent :editor="editor" :model-value="value || ''" @update:model-value="handleChange" :config="editorConfig" tag-name="textarea" />
 
     <div class="v-messages" style="--v-medium-emphasis-opacity: 1">
       <div
