@@ -53,13 +53,11 @@ const options = computed<{
     props.properties
   );
 });
-
-const ENV_BASE_IMAGE_URL = import.meta.env.VITE_OXIN_BASE_IMAGE_URL;
 </script>
 
 <template>
   <v-img
-    :src="src ? ENV_BASE_IMAGE_URL + options.prependUrl + src + options.appendUrl : ''"
+    :src="src ? options.prependUrl + src + options.appendUrl : ''"
     :class="options.class"
     :width="options.width"
     :height="options.height"
