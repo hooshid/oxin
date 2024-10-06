@@ -57,7 +57,12 @@ const options = computed<{
    * Prepend avatar in select list
    */
   prependAvatar: string;
-
+  
+  /**
+   * Prepend to avatar url
+   */
+  prependAvatarUrl: string;
+  
   /**
    * Return full object of selected item
    */
@@ -96,6 +101,7 @@ const options = computed<{
       itemValue: "id",
       prependIcon: null,
       prependAvatar: null,
+      prependAvatarUrl: "",
       returnObject: false,
       noFilter: true,
       hideNoData: true,
@@ -357,7 +363,7 @@ const { value, errors, handleChange } = useField(
         v-bind="autocompleteProps"
         :subtitle="item.raw[options.itemSubtitle]"
         :prepend-icon="options.prependIcon"
-        :prepend-avatar="options.prependAvatar"
+        :prepend-avatar="item.raw[options.prependAvatar] ? options.prependAvatarUrl + item.raw[options.prependAvatar] : ''"
         @click="selectItem(item)"
       />
     </template>
