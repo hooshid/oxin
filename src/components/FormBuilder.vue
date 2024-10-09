@@ -455,8 +455,8 @@ function saveData() {
   if(hasUploadForm) {
     schema.value.forEach(function (field) {
       if (field.model && !field.disabled && field.type == "upload") {
-        if(values[field.model] && values[field.model][0]){
-          formData.append(field.model, values[field.model][0]);
+        if(values[field.model]){
+          formData.append(field.model, values[field.model]);
         }
       }
     });
