@@ -262,6 +262,17 @@ const editorConfig = {
       }
     ]
   },
+  // Support custom html tags
+  htmlSupport: {
+    allow: [
+      {
+        name: 'span',
+        classes: ['tg-spoiler'],
+        attributes: true,
+        styles: true
+      }
+    ]
+  },
 };
 </script>
 
@@ -289,6 +300,11 @@ const editorConfig = {
   --ck-color-toolbar-border: hsl(0deg 0% 67.06%);
   --ck-color-toolbar-background: #e1e1e1;
   --ck-z-modal: 9999;
+  --ck-z-panel: calc(var(--ck-z-default) + 99999);
+}
+
+.ck.ck-balloon-panel.ck-tooltip {
+  z-index: calc(var(--ck-z-dialog) + 999100);
 }
 
 .ck.ck-powered-by-balloon,
@@ -367,5 +383,34 @@ const editorConfig = {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Telegram Spoiler */
+.tg-spoiler {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+.tg-spoiler::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #a2a2a2;
+  border-radius: 25px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.7s ease, transform 0.3s ease;
+  filter: blur(1px);
+}
+.tg-spoiler:hover::before {
+  opacity: 0;
+  transform: translateY(-50%)rotateX(80deg);
+  transition: opacity 1.0s ease, transform 0.5s ease;
 }
 </style>
