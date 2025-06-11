@@ -171,7 +171,17 @@ defineProps<{
               :parent-model="parentModel"
               :data="data"
             />
-
+            
+            <!-- Slot -->
+            <template v-else-if="field.type === 'slot'">
+              <slot
+                :name="field.model"
+                :field="field"
+                :value="parentModel[field.model]"
+                :values="parentModel"
+              />
+            </template>
+            
             <template v-else>{{ field.type }}</template>
           </slot>
         </v-col>
