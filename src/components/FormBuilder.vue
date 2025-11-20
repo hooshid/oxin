@@ -583,7 +583,7 @@ defineExpose({
     @submit.prevent="onSubmit"
     :class="[editMode ? 'form-mode-is-edit' : 'form-mode-is-add']"
   >
-    <slot name="form.prepend" />
+    <slot name="prepend" />
     
     <FormElements :schema="schema" :data="modelValue">
       <template
@@ -606,7 +606,7 @@ defineExpose({
       </template>
     </FormElements>
 
-    <slot name="form.append" />
+    <slot name="append" />
     
     <v-divider v-if="!options.hideActions" />
 
